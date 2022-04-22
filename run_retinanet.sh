@@ -19,7 +19,7 @@ run_retinanet_sdk() {
   popd
 
   # Download the sdk in current folder
-  POPSDK_SDKS_DIR=$PWD popsdk-download $SDK_VERSION
+ popsdk-download --dir $PWD --choose $SDK_VERSION
 
   # untar the sdk tarball
   for i in *.tar.gz;do
@@ -36,30 +36,29 @@ run_retinanet_sdk() {
   popd
 
   pushd retinanet_mlperf/retinanet_ipu
+  wget https://download.pytorch.org/models/resnext50_32x4d-7cdf4587.pth
   make
   POPLAR_ENGINE_OPTIONS='{"autoReport.all":"true", "debug.allowOutOfMemory":"true", "autoReport.directory":"./pv"}' $POPRUN_PREFIX python3 train.py --config 'retinanet_default_config' 2>&1 | tee LOG
   popd
   popd
 }
 
-# banner 2.6.0-EA.1+918
-# run_retinanet_sdk 2.6.0-EA.1+918
+# echo "************************ RUNNING 2.5.0+895-EA.1 ************************"
+# banner 2.5.0+895-EA.1
+# run_retinanet_sdk 2.5.0+895-EA.1
 
-banner 2.5.0-EA.1+895
-run_retinanet_sdk 2.5.0-EA.1+895
+echo "************************ RUNNING 2.5.0+896-EA.1 ************************"
+banner 2.5.0+896-EA.1
+run_retinanet_sdk 2.5.0+896-EA.1
 
-banner 2.5.0+909
-run_retinanet_sdk 2.5.0+909
+# echo "************************ RUNNING 2.5.0+932 ************************"
+# banner 2.5.0+932
+# run_retinanet_sdk 2.5.0+932
 
-banner 2.5.0+924
-run_retinanet_sdk 2.5.0+924
+# echo "************************ RUNNING 2.5.0+942 ************************"
+# banner 2.5.0+942
+# run_retinanet_sdk 2.5.0+942
 
-banner 2.5.0+934
-run_retinanet_sdk 2.5.0+934
-
-banner 2.5.0+952
-run_retinanet_sdk 2.5.0+952
-
-banner 2.5.0+953
-run_retinanet_sdk 2.5.0+953
-
+# echo "************************ RUNNING 2.5.0+953 ************************"
+# banner 2.5.0+953
+# run_retinanet_sdk 2.5.0+953
