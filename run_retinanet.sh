@@ -2,6 +2,9 @@ PERSONAL_ACCESS_TOKEN=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
 POPRUN_PREFIX='poprun --num-replicas 4 --ipus-per-replica 4 --num-instances 4'
 
 run_retinanet_sdk() {
+  echo "************************ RUNNING $1 ************************"
+  banner $1
+  
   SDK_VERSION=$1
   WORKING_DIR=sdk_$SDK_VERSION
 
